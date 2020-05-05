@@ -2,10 +2,13 @@ let player_one_choice;
 let player_two_choice;
 let playerOneWins = 0;
 let playerTwoWins = 0;
-
+$("#root").addClass("container text-center")
 $scores = $('<div>');
+$scores.attr("id", "scores")
 $playerOneScore = $('<h4>');
 $playerTwoScore = $('<h4>');
+$playerOneScore.attr("id", "player-one-score");
+$playerTwoScore.attr("id", "player-two-score");
 $playerOneScore.text(`Player One wins: ${playerOneWins}`);
 $playerTwoScore.text(`Player Two wins: ${playerTwoWins}`);
 $('#root').append($scores.append($playerOneScore, $playerTwoScore));
@@ -18,9 +21,9 @@ $title = $('<h1>');
 $title.attr('id', 'title');
 $title.text('Rock Paper Scissors');
 // Instructions
-$instructions = $('<h3>');
-$instructions.text(
-  'This is a two player game.\nPress the start button to begin.\nPlayers then take turns choosing what to throw'
+$instructions = $('<div>');
+$instructions.html(
+  '<h5>This is a two player game.</h5><h5>Press the start button to begin.</h5><h5>Players then take turns choosing what to throw</h5>'
 );
 $instructions.attr('id', 'instructions');
 $('#start-screen').append($title, $instructions);
@@ -181,13 +184,13 @@ $playerTwoScissorButton.on('click', () => {
     );
   } else if (player_one_choice === 'paper') {
     playerTwoWins++;
-    $playerTwoScore.text(`Player Two wins! ${playerOneWins}`);
+    $playerTwoScore.text(`Player Two wins: ${playerTwoWins}`);
     $results.html(
       `<h1>Player Two Wins!</h1><h3>Player One threw: ${player_one_choice}</h3><h3>Player Two threw: ${player_two_choice}</h3>`
     );
   } else {
     playerOneWins++;
-    $playerOneScore.text(`Player One wins! ${playerTwoWins}`);
+    $playerOneScore.text(`Player One wins: ${playerOneWins}`);
     $results.html(
       `<h1>Player One Wins!</h1><h3>Player One threw: ${player_one_choice}</h3><h3>Player Two threw: ${player_two_choice}</h3>`
     );
@@ -203,13 +206,13 @@ $playerTwoPaperButton.on('click', () => {
     );
   } else if (player_one_choice === 'rock') {
     playerTwoWins++;
-    $playerTwoScore.text(`Player Two wins! ${playerTwoWins}`);
+    $playerTwoScore.text(`Player Two wins: ${playerTwoWins}`);
     $results.html(
       `<h1>Player Two Wins! <h3>Player One threw: ${player_one_choice}</h3><h3>Player Two threw: ${player_two_choice}</h3>`
     );
   } else {
     playerOneWins++;
-    $playerOneScore.text(`Player One wins! ${playerTwoWins}`);
+    $playerOneScore.text(`Player One wins! ${playerOneWins}`);
     $results.html(
       `<h1>Player One Wins!  <h3>Player One threw: ${player_one_choice}</h3><h3>Player Two threw: ${player_two_choice}</h3>`
     );
