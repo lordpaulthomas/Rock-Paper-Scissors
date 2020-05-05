@@ -138,21 +138,28 @@ $resultsScreen.hide();
 // Player One Button Actions
 $playerOneRockButton.on('click', () => {
   player_one_choice = $playerOneRockButton.val();
+  localStorage.clear();
+  localStorage.setItem("choice", player_one_choice)
   $playerOneScreen.hide();
   $waitingScreen.show();
 });
 $playerOneScissorButton.on('click', () => {
   player_one_choice = $playerOneScissorButton.val();
+  localStorage.clear();
+  localStorage.setItem("choice", player_one_choice)
   $playerOneScreen.hide();
   $waitingScreen.show();
 });
 $playerOnePaperButton.on('click', () => {
   player_one_choice = $playerOnePaperButton.val();
+  localStorage.clear();
+  localStorage.setItem("choice", player_one_choice);
   $playerOneScreen.hide();
   $waitingScreen.show();
 });
 // Player Two Button Actions
 $playerTwoRockButton.on('click', () => {
+  player_one_choice = localStorage.getItem("choice");
   player_two_choice = $playerTwoRockButton.val();
   $playerTwoScreen.hide();
   $resultsScreen.show();
@@ -163,7 +170,7 @@ $playerTwoRockButton.on('click', () => {
   } else if (player_one_choice === 'paper') {
     playerOneWins++;
     $playerOneScore.text(`Player One wins: ${playerOneWins}`);
-    $results.hmtl(
+    $results.html(
       `<h1>Player One Wins!</h1> <h3> Player One threw: ${player_one_choice}</h3><h3>Player Two threw: ${player_two_choice}</h3>`
     );
   } else {
@@ -175,6 +182,7 @@ $playerTwoRockButton.on('click', () => {
   }
 });
 $playerTwoScissorButton.on('click', () => {
+  player_one_choice = localStorage.getItem("choice");
   player_two_choice = $playerTwoScissorButton.val();
   $playerTwoScreen.hide();
   $resultsScreen.show();
@@ -197,6 +205,7 @@ $playerTwoScissorButton.on('click', () => {
   }
 });
 $playerTwoPaperButton.on('click', () => {
+  player_one_choice = localStorage.getItem("choice");
   player_two_choice = $playerTwoPaperButton.val();
   $playerTwoScreen.hide();
   $resultsScreen.show();
